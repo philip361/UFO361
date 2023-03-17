@@ -1,36 +1,55 @@
 import GLOOP.*;
 public class Ufo{
+    public GLTastatur tast;
+    private GLWuerfel mark;
 
-    GLPrismoid ufo;
-    public Ufo(){
-        ufo = new GLPrismoid
-                (0,0,0, 50,50,3,20);
+    double pX,pY;
+
+    public Ufo() {
+        mark = new GLWuerfel(0, 0, 0, 25);
+        mark.setzeTextur("src/img/MarkAbi.jpg");
+    }
+    //Steuerung
+    public void bewegeLinks() {
+        mark.verschiebe(-0.5,0,0);
+        mark.setzeDrehung(0,-5,0);
+
     }
 
-    //UFo nach links
-    public void bewegeLinks(){
-        ufo.verschiebe(-4,0,0);
+    public void bewegeRechts() {
+        mark.verschiebe(0.5,0,0);
+        mark.setzeDrehung(0,5,0);
+    }
+    public void drehungreset() {
+
+        mark.setzeDrehung(0,0,0);
+
     }
 
-    //Ufo nach rechts
-    public void bewegeRechts(){
-        ufo.verschiebe(4,0,0);
+    public void bewegeHoch() {
+        mark.verschiebe(0,0,0.5);
+        mark.setzeDrehung(10,0,0);
     }
 
-    //Ufo nach rechts
-    public void bewegeHoch(){
-        ufo.verschiebe(0,4,0);
+    public void bewegeRunter() {
+        mark.verschiebe(0,0,-0.5);
+        mark.setzeDrehung(-10,0,0);
     }
 
-    // Ufo nach unten
-    public void bewegeUnten(){
-        ufo.verschiebe(0,-4,0);
+    public void explodiere() {
+        double z = Math.random();
+        for (int i=0; i<2000; i++){
+
+        }
     }
 
-
-   //gibt X Wert von UFO
-    public double ufoX(){
-        return ufo.gibX();
+    public double gibX(){
+        return mark.gibX();
     }
-
+    public double gibY(){
+        return mark.gibY();
+    }
+    public double gibZ(){
+        return mark.gibZ();
+    }
 }

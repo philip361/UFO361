@@ -1,63 +1,73 @@
-import GLOOP.*;
-public class Ufospiel{
+import GLOOP.*; 
+public class Ufospiel {
     private GLKamera kamera;
     private GLLicht licht;
     private GLTastatur tastatur;
     private GLHimmel himmel;
+    Asteroid[] a1;
 
     private Ufo dasUfo;
-    private Asteroid asteroid1,asteroid2,asteroid3;
 
 
     public Ufospiel() {
-        kamera = new GLSchwenkkamera(0,-10);
-        kamera.setzeBlickpunkt(0, 10, 0);
-        kamera.verschiebe(0, 200, 500);
+        kamera = new GLKamera(1920, 1080);
+        kamera.verschiebe(0, -200, -300);
+        kamera.setzeBlickpunkt(0,0,150);
         licht = new GLLicht();
         tastatur = new GLTastatur();
         himmel = new GLHimmel("src/img/Sterne.jpg");
 
         dasUfo = new Ufo();
+        a1 = new Asteroid[20];
+        for (int q=0; q < a1.length; q++) {
+            a1[q] = new Asteroid(dasUfo, 0, 0);
+        }
 
-        asteroid1 = new Asteroid();
+        for (int i=0 ;i < a1.length; i++) {
+            a1[i].tp(Math.random() * 1000 - 500, 1000 + Math.random() * 1000);
+        }
 
 
 
-        this.weiter();
 
 
-
-
+        steuerung();
     }
 
-
-    public void weiter(){
-        while (0==0) {
-            asteroid1.bewegedich();
-
-            if (tastatur.istGedrueckt('w') && (dasUfo.ufoX() < 500)) {
-                dasUfo.bewegeHoch();
-            }
-            if (tastatur.istGedrueckt('d') && (dasUfo.ufoX() < 500)) {
-                dasUfo.bewegeRechts();
-            }
-            if (tastatur.istGedrueckt('a') && (dasUfo.ufoX() > -500)) {
+    public void steuerung() {
+        while (!tastatur.esc()) {
+            if (tastatur.links() && dasUfo.gibX() > -475) {
                 dasUfo.bewegeLinks();
             }
-            if (tastatur.istGedrueckt('s') && (dasUfo.ufoX() < 500)) {
-                dasUfo.bewegeUnten();
+            else if (tastatur.rechts() && dasUfo.gibX() < 475) {
+                dasUfo.bewegeRechts();
             }
-            Sys.warte(5);
+          else  if (tastatur.oben() && dasUfo.gibY() < 200) {
+                dasUfo.bewegeHoch();
+            }
+          else  if (tastatur.unten() && dasUfo.gibY() > -200) {
+                dasUfo.bewegeRunter();
+
+            }
+            else {
+                dasUfo.drehungreset();
+            }
+            for (int i=0 ;i <a1.length; i++){
+                a1[i].bewegeDich(2.5);
+                if (a1[i].gibY() < -1000) {
+                    a1[i].tp(Math.random() * 1000 - 500, 1000 + Math.random() * 1000);
+                }
+            }
+           /*
+            if (asteroid2.gibY() < -1000) {
+                asteroid2.tp(-330,1200);
+            }
+            if (asteroid3.gibY() < -1000) {
+                asteroid3.tp(430,1350);
+            }
+            */Sys.warte();
         }
-        }
-
-
-
-
+        Sys.beenden();
     }
 
-
-
-
-
-
+}

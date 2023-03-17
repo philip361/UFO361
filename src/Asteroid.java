@@ -1,27 +1,32 @@
 import GLOOP.*;
-import java.math.*;
 public class Asteroid{
+    public double pX,pY;
+    private GLKugel kugel;
+    private Ufo dasUfo;
 
-
-    private GLKugel asteroid;
-
-    public Asteroid(){
-        asteroid = new GLKugel(0,500,0,40);
-        asteroid.verschiebe(Math.random() *1000 -500,600,0);
+    public Asteroid(Ufo pUfo, double pX, double pY){
+        kugel = new GLKugel(pX,1000,0, 50, "src/img/Krater.jpg");
+        dasUfo = pUfo;
     }
 
-    public double asteroidY(){
-        return asteroid.gibY();
+    public void bewegeDich(double speed){
+        kugel.verschiebe(0,-1 * speed,0);
     }
-    public void aufstartwert(){
-        asteroid.verschiebe(Math.random() *1000 -500,600,0);
+    public void tp(double pX, double pY){
+        kugel.setzePosition(pX,pY,0);
+    }
+    public double gibX(){
+        return kugel.gibX();
+    }
+    public double gibY(){
+        return kugel.gibY();
+    }
+    public double gibZ(){
+        return kugel.gibZ();
     }
 
-    public void bewegedich(){
-        asteroid.verschiebe(0,-2,0);
-
-    }
 
 }
+
 
 
