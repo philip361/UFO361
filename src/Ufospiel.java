@@ -26,7 +26,7 @@ public class Ufospiel {
         }
 
         for (int i=0 ;i < a1.length; i++) {
-            a1[i].tp(Math.random() * 1000 - 500, 1000 + Math.random() * 1000,Math.random() * 1000 - 500);
+            a1[i].tp(Math.random() * 1000 - 500, 1000 + Math.random() * 1000,Math.random() * 1000 - 450);
         }
 
 
