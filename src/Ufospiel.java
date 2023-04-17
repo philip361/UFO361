@@ -18,13 +18,15 @@ public class Ufospiel {
         himmel = new GLHimmel("src/img/Sterne.jpg");
 
         dasUfo = new Ufo();
-        a1 = new Asteroid[20];
+
+
+        a1 = new Asteroid[50];
         for (int q=0; q < a1.length; q++) {
             a1[q] = new Asteroid(dasUfo, 0, 0);
         }
 
         for (int i=0 ;i < a1.length; i++) {
-            a1[i].tp(Math.random() * 1000 - 500, 1000 + Math.random() * 1000);
+            a1[i].tp(Math.random() * 1000 - 500, 1000 + Math.random() * 1000,Math.random() * 1000 - 500);
         }
 
 
@@ -55,7 +57,7 @@ public class Ufospiel {
             for (int i=0 ;i <a1.length; i++){
                 a1[i].bewegeDich(2.5);
                 if (a1[i].gibY() < -1000) {
-                    a1[i].tp(Math.random() * 1000 - 500, 1000 + Math.random() * 1000);
+                    a1[i].tp(Math.random() * 1000 - 500, 1000 + Math.random() * 1000,Math.random() * 1000 - 500);
                 }
             }
            /*

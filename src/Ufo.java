@@ -1,6 +1,6 @@
 import GLOOP.*;
 public class Ufo{
-    public GLTastatur tast;
+    public GLTastatur tastatur;
     private GLWuerfel mark;
 
     double pX,pY;
@@ -11,10 +11,14 @@ public class Ufo{
     }
     //Steuerung
     public void bewegeLinks() {
-        mark.verschiebe(-0.5,0,0);
-        mark.setzeDrehung(0,-5,0);
 
-    }
+
+        mark.verschiebe(-0.5, 0, 0);
+        mark.setzeDrehung(0, -5, 0);
+
+        }
+
+
 
     public void bewegeRechts() {
         mark.verschiebe(0.5,0,0);
@@ -27,6 +31,7 @@ public class Ufo{
     }
 
     public void bewegeHoch() {
+
         mark.verschiebe(0,0,0.5);
         mark.setzeDrehung(10,0,0);
     }

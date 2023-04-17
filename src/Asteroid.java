@@ -12,8 +12,8 @@ public class Asteroid{
     public void bewegeDich(double speed){
         kugel.verschiebe(0,-1 * speed,0);
     }
-    public void tp(double pX, double pY){
-        kugel.setzePosition(pX,pY,0);
+    public void tp(double pX, double pY, double pZ){
+        kugel.setzePosition(pX,pY,pZ);
     }
     public double gibX(){
         return kugel.gibX();
