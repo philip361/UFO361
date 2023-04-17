@@ -40,13 +40,18 @@ public class Ufo{
         mark.verschiebe(0,0,-0.5);
         mark.setzeDrehung(-10,0,0);
     }
-
-    public void explodiere() {
-        double z = Math.random();
-        for (int i=0; i<2000; i++){
-
+    public void explodiere(){
+        double e = Math.random();
+        for (int i=0; i< 2000; i++){
+            mark.verschiebe(e,e,-e);
+            mark.drehe(-e,e,e);
+            Sys.warte();
         }
     }
+
+
+
+
 
     public double gibX(){
         return mark.gibX();

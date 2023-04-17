@@ -58,16 +58,15 @@ public class Ufospiel {
                 a1[i].bewegeDich(2.5);
                 if (a1[i].gibY() < -1000) {
                     a1[i].tp(Math.random() * 1000 - 500, 1000 + Math.random() * 1000,Math.random() * 1000 - 500);
+
+                }
+                if (a1[i].hit()){
+                 dasUfo.explodiere();
+                 Sys.warte(1000);
+                 Sys.beenden();
                 }
             }
-           /*
-            if (asteroid2.gibY() < -1000) {
-                asteroid2.tp(-330,1200);
-            }
-            if (asteroid3.gibY() < -1000) {
-                asteroid3.tp(430,1350);
-            }
-            */Sys.warte();
+       Sys.warte();
         }
         Sys.beenden();
     }
